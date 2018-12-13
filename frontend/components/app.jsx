@@ -1,11 +1,21 @@
 import React from 'react';
-import SignupContainer from './session/signup_container';
-import { Route } from 'react-route-dom';
+import { Route } from 'react-router-dom';
+import GreetingContainer from './greeting/greeting_container';
+import LoginFormContainer from './session_form/login_form_container';
+import SignupFormContainer from './session_form/signup_form_container';
 
-export default () => {
+const App = () => {
     return (
         <div>
-            <Route path='/signup' component={ SignupContainer } />
+            <header>
+                <h1>Task Rabbit is online!</h1>
+                <GreetingContainer />
+            </header>
+
+            <Route path="/login" component={LoginFormContainer} />
+            <Route path="/signup" component={SignupFormContainer} />
         </div>
     )
 }
+
+export default App;
