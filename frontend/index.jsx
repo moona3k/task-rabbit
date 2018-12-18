@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let store;
     if (window.currentUser) {
         const preloadedState = {
-            session: {id: window.currentUser.id},
+            session: { currentUser: {id: window.currentUser.id}},
+            // session: { currentUser: window.currentUser }
             entities: {
                 users: {[window.currentUser.id]: window.currentUser}
             }
@@ -24,4 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Does this parse through all the document to location id="root"?
     ReactDOM.render(<Root store={store}/>, root);
 });
+
+
 

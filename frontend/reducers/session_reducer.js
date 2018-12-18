@@ -3,7 +3,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_ac
 // Default state
 // Return { currentUser: null } POJO if there is no user is logged in
 const _nullSession = {
-    currentUser: null
+    currentUser: {}
 }
 
 // Reducer takes in 2 args (previous state & action)

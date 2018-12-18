@@ -23,6 +23,7 @@ const Greeting = (props) => {
     }
 
     return props.currentUser ? personalGreeting() : sessionLinks();
+    
 
 }
 

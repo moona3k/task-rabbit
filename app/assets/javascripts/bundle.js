@@ -176,6 +176,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.js");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.js");
+/* harmony import */ var _util_routes_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/routes_utils */ "./frontend/util/routes_utils.jsx");
+
 
 
 
@@ -183,10 +185,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Task Rabbit is online!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-page"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+    className: "main-page-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "image"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_routes_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_routes_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }));
@@ -258,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.currentUser.id]
   };
 }; // const mapStateToProps = ({ session, entities: { users } }) => {
 //     return {
@@ -342,7 +350,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     processForm: function processForm(formUser) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["login"])(formUser));
@@ -439,6 +447,8 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form-background-image"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "login-form-box"
@@ -473,7 +483,7 @@ function (_React$Component) {
         type: "submit",
         value: this.props.formType,
         className: "session-submit"
-      }))));
+      })))));
     }
   }]);
 
@@ -569,7 +579,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (window.currentUser) {
     var preloadedState = {
       session: {
-        id: window.currentUser.id
+        currentUser: {
+          id: window.currentUser.id
+        }
       },
       entities: {
         users: _defineProperty({}, window.currentUser.id, window.currentUser)
@@ -700,7 +712,7 @@ __webpack_require__.r(__webpack_exports__);
 // Return { currentUser: null } POJO if there is no user is logged in
 
 var _nullSession = {
-  currentUser: null // Reducer takes in 2 args (previous state & action)
+  currentUser: {} // Reducer takes in 2 args (previous state & action)
 
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -783,6 +795,65 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/routes_utils.jsx":
+/*!****************************************!*\
+  !*** ./frontend/util/routes_utils.jsx ***!
+  \****************************************/
+/*! exports provided: AuthRoute, ProtectedRoute */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthRoute", function() { return AuthRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProtectedRoute", function() { return ProtectedRoute; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    loggedIn: Boolean(state.session.currentUser.id)
+  };
+}; // <AuthRoute path ="" component={} />
+
+
+var Auth = function Auth(_ref) {
+  var loggedIn = _ref.loggedIn,
+      path = _ref.path,
+      Component = _ref.component;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: path,
+    render: function render(props) {
+      return loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+        to: "/"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
+    }
+  });
+};
+
+var Protected = function Protected(_ref2) {
+  var loggedIn = _ref2.loggedIn,
+      path = _ref2.path,
+      Component = _ref2.component;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: path,
+    render: function render(props) {
+      return loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+        to: "/signup"
+      });
+    }
+  });
+};
+
+var AuthRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Auth));
+var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Protected));
 
 /***/ }),
 

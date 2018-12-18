@@ -1,0 +1,70 @@
+.main-page{
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue;
+
+}
+
+.main-page-header{
+    width: 100%;
+    height: 80px;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+
+.image{
+    margin-left: 50px;
+    background: url("data:image/png;base64,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");
+    height: 50px;
+    width: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+// choosing a major with a career destination
+// not goal-oriented
+// rights and responsibilities are two sides of the same coin
+// your rights are my responsibilities
+// responsibility is what gives life meaning;
+// lift a load, then you can tolerate yourself;
+// if you're easily killed and easily hurt, why should you have any self-respect?
+// pick something up and carry it; you may feel useless, but you can still carry a small load;
+
+// women know what they have to do; men have to figure out what they have to do;
+// and if men have nothing worth living for, then they stay peter pan; and why the hell not?
+// because the alternative to valued responsibility is impuslive, low-class pleasure;
+// (as seen in Pinochio and Pleasure Island; why lift a load when there's nothing in it for you?)
+
+// man has to decide that he needs to do something;
+// what do you value?
+
+// grow the hell up and do something useful;
+// stop looking at rights, begin looking at responsibilities;
+
+// There's an amazing movie called "Ink", about demons and how they affect human life 
+// (metaphorically, of course). And there's a brilliant line there (i don't remember it word-by-word) - 
+// to destroy a man, you make it so that he has nothing to be proud about. 
+// A man without pride is done, he's just a wiggling mass. And It's incredible, 
+// after all these years since watching that movie, to hear the same thoughts 
+// but from completely different perspective of Jordan, where he calls that pride a responsibility.
+
+// you go fight a dragon
+// and you will fall. but you have to stand back up
+// if you win without struggle, then it was not a fight;
+
+// not lying is the best bet (but life is complex and life can run you over)
+
+
+.header-group{
+    padding-right: 50px;
+}
+
+.login-signup{
+    padding-right: 50px;
+
+}
+
