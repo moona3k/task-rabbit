@@ -15,5 +15,6 @@ const Root = ({store}) => {
 };
 
 // Q: What purpose does HashRouter serve here?
+// Allow router-like properties to all of the children components?
 
 export default Root;

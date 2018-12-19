@@ -191,16 +191,25 @@ var App = function App() {
     className: "main-page-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "image"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_routes_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_routes_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_routes_utils__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }));
+  })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (App);
+/* harmony default export */ __webpack_exports__["default"] = (App); // LoginForm Container
+// SignupForm Container
+// Dashboard Container
+// TaskForm Container
+// SplashPage
+// import LoginFormContainer from './login_form_container';
+// import SignupFormContainer from './signup_form_container';
+// import DashboardContainer from './dashboard_container';
+// import SplashPage from './splash_page';
+// import TaskFormContainer from './task_form_container';
 
 /***/ }),
 
@@ -313,6 +322,7 @@ var Root = function Root(_ref) {
     store: store
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 }; // Q: What purpose does HashRouter serve here?
+// Allow router-like properties to all of the children components?
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
@@ -583,6 +593,7 @@ document.addEventListener('DOMContentLoaded', function () {
           id: window.currentUser.id
         }
       },
+      // session: { currentUser: window.currentUser }
       entities: {
         users: _defineProperty({}, window.currentUser.id, window.currentUser)
       }
